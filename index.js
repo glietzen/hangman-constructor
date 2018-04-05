@@ -10,4 +10,22 @@ let wordBank = newWord.wordlist;
 let remainingGuesses = 10;
 let lettersGuessed = [];
 let counter = 0;
-let currentWord
+let currentWord;
+
+function startGame() {
+    console.log(`Let's play US geography hangman!`);
+    if (lettersGuessed.length > 0) {
+        lettersGuessed = [];
+    }
+    inquirer.prompt([{
+        name: 'play',
+        type: 'confirm',
+        message: 'Do you want to play?'
+    }]).then(function(ans) {
+        if (ans.play) {
+            newGame();
+        } else {
+            console.log(`Then why did you open the app?`);
+        }
+    })
+}
